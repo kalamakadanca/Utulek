@@ -16,6 +16,9 @@ namespace Utulek.Model
         public string DatumPrijmu; // dd/mm/yyyy př.10/9/2025
         public string ZdravotniStav;
         public string Poznamka;
+        public bool Adopce = false;
+        public string DatumAdopce; // dd/mm/yyyy př.10/9/2025
+
 
         public Zvire(string jmeno, string druh, int vek, string pohlavi, string datumprijmu, string zdravotnistav, string poznamka)
         {
@@ -26,6 +29,11 @@ namespace Utulek.Model
             DatumPrijmu = datumprijmu;
             ZdravotniStav = zdravotnistav;
             Poznamka = poznamka;
+        }
+
+        public void OznacitAdopci()
+        {
+            Adopce = true;
         }
 
     }
