@@ -11,9 +11,10 @@ namespace Utulek
     
     internal class Program
     {
-        static void ZapisDoSouboru(string Soubor, Zvire Zvire)
+        static void ZapisZvireDoSouboru(string Soubor, Zvire Zvire)
     {
-        string zvireparse = $"{Zvire.ID}@{Zvire.Jmeno}@{Zvire.Druh}@{Zvire.Vek}@{Zvire.Pohlavi}@{Zvire.DatumPrijmu}@{Zvire.ZdravotniStav}@{Zvire.Poznamka}";
+            string zvireparse = $"{Zvire.ID}@{Zvire.Jmeno}@{Zvire.Druh}@{Zvire.Vek}@{Zvire.Pohlavi}@{Zvire.DatumPrijmu}@{Zvire.ZdravotniStav}@{Zvire.Poznamka}";
+            // 1@Benny@pes@3@muz@2022-05-10@zdravy@pritelny a hravy - forma zapisu
         using (StreamWriter sw = new StreamWriter(Soubor, true))
         {
             sw.WriteLine(zvireparse);
