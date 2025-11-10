@@ -36,6 +36,8 @@ namespace Utulek
     {
         static void ZapisZvireDoSouboru(string Soubor, Zvire Zvire)
         {
+            //TODO- I need to create an automatic generation of id based on the last id
+            // TODO- I do not know if I should create an automatic filter based on this thing
         string ProjectPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "..");
         string FullPath = Path.Combine(ProjectPath, Soubor);
             string ZvireTemp = $"{Zvire.ID}@{Zvire.Jmeno}@{Zvire.Druh}@{Zvire.Vek}@{Zvire.Pohlavi}@{Zvire.DatumPrijmu}@{Zvire.ZdravotniStav}@{Zvire.Poznamka}";
