@@ -8,16 +8,16 @@ namespace Utulek.Model
 {
     internal class Zvire
     {
-        public int ID;
-        public string Jmeno;
-        public string Druh;
-        public int Vek;
-        public string Pohlavi;
-        public string DatumPrijmu; // dd/mm/yyyy př.10/9/2025
-        public string ZdravotniStav;
-        public string Poznamka;
-        public bool Adopce = false;
-        public string DatumAdopce; // dd/mm/yyyy př.10/9/2025
+        private int ID;
+        private string Jmeno;
+        private string Druh;
+        private int Vek;
+        private string Pohlavi;
+        private string DatumPrijmu; // dd/mm/yyyy př.10/9/2025
+        private string ZdravotniStav;
+        private string Poznamka;
+        private bool Adopce = false;
+        private string DatumAdopce; // dd/mm/yyyy př.10/9/2025
 
 
         public Zvire(string jmeno, string druh, int vek, string pohlavi, string datumprijmu, string zdravotnistav, string poznamka)
@@ -34,6 +34,47 @@ namespace Utulek.Model
         public void OznacitAdopci()
         {
             Adopce = true;
+        }
+
+        public int GetID()
+        {
+            return ID;
+        }
+        public string GetJmeno()
+        {
+            return Jmeno;
+        }
+        public string GetDruh()
+        {
+            return Druh;
+        }
+        public int GetVek()
+        {
+            return Vek;
+        }
+        public string GetPohlavi()
+        {
+            return Pohlavi;
+        }
+        public string GetDatumPrijmu()
+        {
+            return DatumPrijmu;
+        }
+        public string GetZdravotniStav()
+        {
+            return ZdravotniStav;
+        }
+        public string GetPoznamka()
+        {
+            return Poznamka;
+        }
+        public bool GetAdopce()
+        {
+            return Adopce;
+        }
+        public string GetDatumAdopce()
+        {
+            return DatumAdopce;
         }
 
     }
