@@ -9,7 +9,7 @@ using System.Diagnostics;
 
 //TODO- I need to create an automatic generation of id based on the last id -- done
 //TODO- I need to create a delete function based on id -- done
-//TODO- I need to create a filtered output reading based on species, age and name
+//TODO- I need to create a filtered output reading based on species, age and name - done
 
 namespace Utulek.Services
 {
@@ -76,9 +76,9 @@ namespace Utulek.Services
             }
         }
 
-        public static List<Zvire> FiltrZviratVek( int Vek, string OperaceSVekem)
+        public static List<Zvire> FiltrZviratVek(string Soubor, int Vek, string OperaceSVekem)
         {
-            List<Zvire> Zvirata = VypisZvireZeSouboru("zvirata.txt");
+            List<Zvire> Zvirata = VypisZvireZeSouboru(Soubor);
             List<Zvire> FiltrovanaZvirata = new List<Zvire>();
 
             switch (OperaceSVekem)
@@ -116,9 +116,9 @@ namespace Utulek.Services
             }
             return FiltrovanaZvirata;
         }
-        public static List<Zvire> FiltrZviratDruh(string Druh)
+        public static List<Zvire> FiltrZviratDruh(string Soubor, string Druh)
         {
-            List<Zvire> Zvirata = VypisZvireZeSouboru("zvirata.txt");
+            List<Zvire> Zvirata = VypisZvireZeSouboru(Soubor);
             List<Zvire> FiltrovanaZvirata = new List<Zvire>();
 
             foreach (var zvire in Zvirata)
@@ -130,9 +130,9 @@ namespace Utulek.Services
             }
             return FiltrovanaZvirata;
         }
-        public static List<Zvire> FiltrZviratJmeno(string Jmeno)
+        public static List<Zvire> FiltrZviratJmeno(string Soubor, string Jmeno)
         {
-            List<Zvire> Zvirata = VypisZvireZeSouboru("zvirata.txt");
+            List<Zvire> Zvirata = VypisZvireZeSouboru(Soubor);
             List<Zvire> FiltrovanaZvirata = new List<Zvire>();
 
             foreach (var zvire in Zvirata)

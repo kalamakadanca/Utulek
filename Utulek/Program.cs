@@ -28,6 +28,24 @@ namespace Utulek
             {
                 Console.WriteLine(zvire.Jmeno + zvire.ID + zvire.Vek);
             }
+
+            List<Zvire> FiltrovanaZverina = EvidenceUtulku.FiltrZviratDruh("zvirata.txt", "pes");
+            foreach (var zvire in FiltrovanaZverina)
+            {
+                Console.WriteLine("Filtrovane zvirata podle druhu (pes): " + zvire.Jmeno + " " + zvire.Druh);
+            }
+            List<Zvire> FiltrovanaZverinaVek = EvidenceUtulku.FiltrZviratVek("zvirata.txt", 3, ">");
+            foreach (var zvire in FiltrovanaZverinaVek)
+            {
+                Console.WriteLine("Filtrovane zvirata podle veku (vetsi nez 3): " + zvire.Jmeno + " " + zvire.Vek);
+            }
+            List<Zvire> FiltrovanaZverinaJmeno = EvidenceUtulku.FiltrZviratJmeno("zvirata.txt", "Micka");
+            foreach (var zvire in FiltrovanaZverinaJmeno)
+            {
+                Console.WriteLine("Filtrovane zvirata podle jmena (Micka): " + zvire.Jmeno);
+            }
+
+            EvidenceUtulku.SmazatZvireZeSouboru("zvirata.txt", 2); 
         }
     }
 }
