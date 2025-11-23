@@ -5,9 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using Utulek.Model;
+using System.Diagnostics;
 
 //TODO- I need to create an automatic generation of id based on the last id -- done
-//TODO- I need to create a delete function based on id
+//TODO- I need to create a delete function based on id -- done
 //TODO- I need to create a filtered output reading based on species, age and name
 
 namespace Utulek.Services
@@ -73,6 +74,75 @@ namespace Utulek.Services
             {
                 ZapisZvireDoSouboru(Soubor, zvire);
             }
+        }
+
+        public static List<Zvire> FiltrZviratVek( int Vek, string OperaceSVekem)
+        {
+            List<Zvire> Zvirata = VypisZvireZeSouboru("zvirata.txt");
+            List<Zvire> FiltrovanaZvirata = new List<Zvire>();
+
+            switch (OperaceSVekem)
+            {
+                case "<":
+                    foreach (var zvire in Zvirata)
+                    {
+                        if (zvire.Vek < Vek)
+                        {
+                            FiltrovanaZvirata.Add(zvire);
+                        }
+                    }
+                    break;
+                case ">":
+                    foreach (var zvire in Zvirata)
+                        {
+                            if (zvire.Vek > Vek)
+                            {
+                                FiltrovanaZvirata.Add(zvire);
+                            }
+                        }
+                    break;
+                case "=":
+                    foreach (var zvire in Zvirata)
+                    {
+                        if (zvire.Vek == Vek)
+                        {
+                            FiltrovanaZvirata.Add(zvire);
+                        }
+                    }
+                    break;
+
+                default:
+                    return FiltrovanaZvirata;
+            }
+            return FiltrovanaZvirata;
+        }
+        public static List<Zvire> FiltrZviratDruh(string Druh)
+        {
+            List<Zvire> Zvirata = VypisZvireZeSouboru("zvirata.txt");
+            List<Zvire> FiltrovanaZvirata = new List<Zvire>();
+
+            foreach (var zvire in Zvirata)
+            {
+                if (zvire.Druh.ToLower() == Druh.ToLower())
+                {
+                    FiltrovanaZvirata.Add(zvire);
+                }
+            }
+            return FiltrovanaZvirata;
+        }
+        public static List<Zvire> FiltrZviratJmeno(string Jmeno)
+        {
+            List<Zvire> Zvirata = VypisZvireZeSouboru("zvirata.txt");
+            List<Zvire> FiltrovanaZvirata = new List<Zvire>();
+
+            foreach (var zvire in Zvirata)
+            {
+                if (zvire.Jmeno.ToLower() == Jmeno.ToLower())
+                {
+                    FiltrovanaZvirata.Add(zvire);
+                }
+            }
+            return FiltrovanaZvirata;
         }
     }
 }

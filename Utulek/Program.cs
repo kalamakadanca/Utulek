@@ -18,6 +18,7 @@ namespace Utulek
 
             EvidenceUtulku.ZapisZvireDoSouboru("zvirata.txt", zvire1);
             EvidenceUtulku.ZapisZvireDoSouboru("zvirata.txt", zvire2);
+            
             Zvire zvire3 = new Zvire("Rex", "pes", 4, "male", "2021/11/20", "zdravy", "ochranny a energicky", "ne", "neadoptovano");
             EvidenceUtulku.ZapisZvireAutoID("zvirata.txt", zvire3);
             EvidenceUtulku.SmazatZvireZeSouboru("zvirata.txt",3);
