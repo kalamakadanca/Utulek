@@ -4,17 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using Utulek.Model;
 
 namespace Utulek.Services
 {
-    internal class Evidence
+    public class EvidenceUtulku
     {
 
         public static void ZapisZvireDoSouboru(string Soubor, Zvire Zvire)
         {
             string ProjectPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "..");
             string FullPath = Path.Combine(ProjectPath, Soubor);
-            string ZvireTemp = $"{Zvire.ID}@{Zvire.Jmeno}@{Zvire.Druh}@{Zvire.Vek}@{Zvire.Pohlavi}@{Zvire.DatumPrijmu}@{Zvire.ZdravotniStav}@{Zvire.Poznamka}@ne@neadoptovano";
+        string ZvireTemp = $"{Zvire.ID}@{Zvire.Jmeno}@{Zvire.Druh}@{Zvire.Vek}@{Zvire.Pohlavi}@{Zvire.DatumPrijmu}@{Zvire.ZdravotniStav}@{Zvire.Poznamka}@{Zvire.Adoptovano}@{Zvire.DatumAdopce}";  
             using (StreamWriter sw = new StreamWriter(FullPath, true))
             {
                 sw.WriteLine(ZvireTemp);
