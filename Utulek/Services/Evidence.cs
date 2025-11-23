@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 using System.IO;
 using Utulek.Model;
 
+//TODO- I need to create an automatic generation of id based on the last id -- done
+//TODO- I need to create a delete function based on id
+//TODO- I need to create a filtered output reading based on species, age and name
+
 namespace Utulek.Services
 {
     public class EvidenceUtulku
@@ -53,6 +57,22 @@ namespace Utulek.Services
             }
             Zvire.ID = MaxID + 1;
             ZapisZvireDoSouboru(Soubor, Zvire);
+        }
+        public static void SmazatZvireZeSouboru(string Soubor, int ID)
+        {
+            List<Zvire> Zvirata = VypisZvireZeSouboru(Soubor);
+            foreach (var zvire in Zvirata)
+            {
+                if (zvire.ID == ID)
+                {
+                    Zvirata.Remove(zvire);
+                    break;
+                }
+            }
+            foreach (var zvire in Zvirata)
+            {
+                ZapisZvireDoSouboru(Soubor, zvire);
+            }
         }
     }
 }
