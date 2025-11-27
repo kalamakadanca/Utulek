@@ -6,75 +6,51 @@ using System.Threading.Tasks;
 
 namespace Utulek.Model
 {
-    internal class Zvire
+    public class Zvire
     {
-        private int ID;
-        private string Jmeno;
-        private string Druh;
-        private int Vek;
-        private string Pohlavi;
-        private string DatumPrijmu; // dd/mm/yyyy př.10/9/2025
-        private string ZdravotniStav;
-        private string Poznamka;
-        private bool Adopce = false;
-        private string DatumAdopce; // dd/mm/yyyy př.10/9/2025
+        public int ID { get; set; }
+        public string Jmeno { get; set; }
+        public string Druh { get; set; }
+        public int Vek { get; set; }
+        public string Pohlavi { get; set; }
+        public string DatumPrijmu { get; set; }
+        public string ZdravotniStav { get; set; }
+        public string Poznamka { get; set; }
+        public string Adoptovano { get; set; }
+        public string DatumAdopce { get; set; }
+
+        public Zvire(int id, string jmeno, string druh, int vek, string pohlavi, string datumPrijmu, string zdravotniStav, string poznamka, string adoptovano, string datumAdopce)
+        {
+            ID = id;
+            private int ID;
+            private string Jmeno;
+            private string Druh;
+            private int Vek;
+            private string Pohlavi;
+            private string DatumPrijmu; // dd/mm/yyyy př.10/9/2025
+            private string ZdravotniStav;
+            private string Poznamka;
+            private bool Adopce = false;
+            private string DatumAdopce; // dd/mm/yyyy př.10/9/2025
+        }
 
 
-        public Zvire(string jmeno, string druh, int vek, string pohlavi, string datumprijmu, string zdravotnistav, string poznamka)
+        public Zvire(string jmeno, string druh, int vek, string pohlavi, string datumPrijmu, string zdravotniStav, string poznamka, string adoptovano, string datumAdopce)
         {
             Jmeno = jmeno;
             Druh = druh;
             Vek = vek;
             Pohlavi = pohlavi;
-            DatumPrijmu = datumprijmu;
-            ZdravotniStav = zdravotnistav;
+            DatumPrijmu = datumPrijmu;
+            ZdravotniStav = zdravotniStav;
             Poznamka = poznamka;
+            Adoptovano = adoptovano;
+            DatumAdopce = datumAdopce;
         }
 
         public void OznacitAdopci()
         {
             Adopce = true;
-        }
-
-        public int GetID()
-        {
-            return ID;
-        }
-        public string GetJmeno()
-        {
-            return Jmeno;
-        }
-        public string GetDruh()
-        {
-            return Druh;
-        }
-        public int GetVek()
-        {
-            return Vek;
-        }
-        public string GetPohlavi()
-        {
-            return Pohlavi;
-        }
-        public string GetDatumPrijmu()
-        {
-            return DatumPrijmu;
-        }
-        public string GetZdravotniStav()
-        {
-            return ZdravotniStav;
-        }
-        public string GetPoznamka()
-        {
-            return Poznamka;
-        }
-        public bool GetAdopce()
-        {
-            return Adopce;
-        }
-        public string GetDatumAdopce()
-        {
-            return DatumAdopce;
         }
 
     }
