@@ -22,17 +22,19 @@ namespace Utulek.Model
         public Zvire(int id, string jmeno, string druh, int vek, string pohlavi, string datumPrijmu, string zdravotniStav, string poznamka, string adoptovano, string datumAdopce)
         {
             ID = id;
-            Jmeno = jmeno;
-            Druh = druh;
-            Vek = vek;
-            Pohlavi = pohlavi;
-            DatumPrijmu = datumPrijmu;
-            ZdravotniStav = zdravotniStav;
-            Poznamka = poznamka;
-            Adoptovano = adoptovano;
-            DatumAdopce = datumAdopce;
-
+            private int ID;
+            private string Jmeno;
+            private string Druh;
+            private int Vek;
+            private string Pohlavi;
+            private string DatumPrijmu; // dd/mm/yyyy př.10/9/2025
+            private string ZdravotniStav;
+            private string Poznamka;
+            private bool Adopce = false;
+            private string DatumAdopce; // dd/mm/yyyy př.10/9/2025
         }
+
+
         public Zvire(string jmeno, string druh, int vek, string pohlavi, string datumPrijmu, string zdravotniStav, string poznamka, string adoptovano, string datumAdopce)
         {
             Jmeno = jmeno;
@@ -44,7 +46,12 @@ namespace Utulek.Model
             Poznamka = poznamka;
             Adoptovano = adoptovano;
             DatumAdopce = datumAdopce;
-
         }
+
+        public void OznacitAdopci()
+        {
+            Adopce = true;
+        }
+
     }
 }
