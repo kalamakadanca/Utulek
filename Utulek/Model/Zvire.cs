@@ -13,29 +13,29 @@ namespace Utulek.Model
         public string Druh { get; set; }
         public int Vek { get; set; }
         public string Pohlavi { get; set; }
-        public string DatumPrijmu { get; set; }
+        public string DatumPrijmu { get; set; } // dd/mm/yyyy př.10/09/2025
         public string ZdravotniStav { get; set; }
         public string Poznamka { get; set; }
-        public string Adoptovano { get; set; }
-        public string DatumAdopce { get; set; }
+        public bool Adopce { get; set; }
+        public string DatumAdopce { get; set; } // dd/mm/yyyy př.10/09/2025
 
-        public Zvire(int id, string jmeno, string druh, int vek, string pohlavi, string datumPrijmu, string zdravotniStav, string poznamka, string adoptovano, string datumAdopce)
+        public Zvire(int id, string jmeno, string druh, int vek, string pohlavi, string datumPrijmu, string zdravotniStav, string poznamka, bool adopce, string datumAdopce)
         {
             ID = id;
-            private int ID;
-            private string Jmeno;
-            private string Druh;
-            private int Vek;
-            private string Pohlavi;
-            private string DatumPrijmu; // dd/mm/yyyy př.10/9/2025
-            private string ZdravotniStav;
-            private string Poznamka;
-            private bool Adopce = false;
-            private string DatumAdopce; // dd/mm/yyyy př.10/9/2025
+            Jmeno = jmeno;
+            Druh = druh;
+            Vek = vek;
+            Pohlavi = pohlavi;
+            DatumPrijmu = datumPrijmu;
+            ZdravotniStav = zdravotniStav;
+            Poznamka = poznamka;
+            Adopce = adopce;
+            DatumAdopce = datumAdopce;
+
         }
 
 
-        public Zvire(string jmeno, string druh, int vek, string pohlavi, string datumPrijmu, string zdravotniStav, string poznamka, string adoptovano, string datumAdopce)
+        public Zvire(string jmeno, string druh, int vek, string pohlavi, string datumPrijmu, string zdravotniStav, string poznamka, bool adopce, string datumAdopce)
         {
             Jmeno = jmeno;
             Druh = druh;
@@ -44,14 +44,15 @@ namespace Utulek.Model
             DatumPrijmu = datumPrijmu;
             ZdravotniStav = zdravotniStav;
             Poznamka = poznamka;
-            Adoptovano = adoptovano;
+            Adopce = adopce;
             DatumAdopce = datumAdopce;
         }
+
 
         public void OznacitAdopci()
         {
             Adopce = true;
+            DatumAdopce = DateTime.Now.ToString("dd/MM/yyyy");
         }
-
     }
 }
