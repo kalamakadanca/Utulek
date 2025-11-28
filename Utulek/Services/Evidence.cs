@@ -20,7 +20,7 @@ namespace Utulek.Services
         {
             string ProjectPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "..");
             string FullPath = Path.Combine(ProjectPath, Soubor);
-        string ZvireTemp = $"{Zvire.ID}@{Zvire.Jmeno}@{Zvire.Druh}@{Zvire.Vek}@{Zvire.Pohlavi}@{Zvire.DatumPrijmu}@{Zvire.ZdravotniStav}@{Zvire.Poznamka}@{Zvire.Adoptovano}@{Zvire.DatumAdopce}";  
+        string ZvireTemp = $"{Zvire.ID}@{Zvire.Jmeno}@{Zvire.Druh}@{Zvire.Vek}@{Zvire.Pohlavi}@{Zvire.DatumPrijmu}@{Zvire.ZdravotniStav}@{Zvire.Poznamka}@{Zvire.Adopce}@{Zvire.DatumAdopce}";  
             using (StreamWriter sw = new StreamWriter(FullPath, true))
             {
                 sw.WriteLine(ZvireTemp);
