@@ -13,13 +13,13 @@ namespace Utulek
     {
         static void Main(string[] args)
         {
-            Zvire zvire1 = new Zvire(1, "Benny", "pes", 3, "male", "2022/5/10", "zdravy", "pritelny a hravy", "ne", "neadoptovano");
-            Zvire zvire2 = new Zvire(2, "Micka", "kocka", 2, "female", "2023/1/15", "zdrava", "klidna a mazliva", "ano", "2024/6/1");
+            Zvire zvire1 = new Zvire(1, "Benny", "pes", 3, "male", "2022/5/10", "zdravy", "pritelny a hravy", EvidenceUtulku.ConvertStringToBool("ne"), "neadoptovano");
+            Zvire zvire2 = new Zvire(2, "Micka", "kocka", 2, "female", "2023/1/15", "zdrava", "klidna a mazliva", EvidenceUtulku.ConvertStringToBool("ano"), "2024/6/1");
 
             EvidenceUtulku.ZapisZvireDoSouboru("zvirata.txt", zvire1);
             EvidenceUtulku.ZapisZvireDoSouboru("zvirata.txt", zvire2);
             
-            Zvire zvire3 = new Zvire("Rex", "pes", 4, "male", "2021/11/20", "zdravy", "ochranny a energicky", "ne", "neadoptovano");
+            Zvire zvire3 = new Zvire("Rex", "pes", 4, "male", "2021/11/20", "zdravy", "ochranny a energicky", EvidenceUtulku.ConvertStringToBool("ne"), "neadoptovano");
             EvidenceUtulku.ZapisZvireAutoID("zvirata.txt", zvire3);
             EvidenceUtulku.SmazatZvireZeSouboru("zvirata.txt",3);
 

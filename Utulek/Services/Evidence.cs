@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.IO;
 using Utulek.Model;
 using System.Diagnostics;
+using System.Runtime.InteropServices;
 
 //TODO- I need to create an automatic generation of id based on the last id -- done
 //TODO- I need to create a delete function based on id -- done
@@ -16,11 +17,28 @@ namespace Utulek.Services
     public class EvidenceUtulku
     {
 
+        
+        public static string ConvertBoolToString(bool value)
+        {
+            return value ? "ano" : "ne";
+        }
+
+        public static bool ConvertStringToBool(string value)
+        {
+            if (value.ToLower() == "ano")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
         public static void ZapisZvireDoSouboru(string Soubor, Zvire Zvire)
         {
             string ProjectPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "..");
             string FullPath = Path.Combine(ProjectPath, Soubor);
-        string ZvireTemp = $"{Zvire.ID}@{Zvire.Jmeno}@{Zvire.Druh}@{Zvire.Vek}@{Zvire.Pohlavi}@{Zvire.DatumPrijmu}@{Zvire.ZdravotniStav}@{Zvire.Poznamka}@{Zvire.Adopce}@{Zvire.DatumAdopce}";  
+        string ZvireTemp = $"{Zvire.ID}@{Zvire.Jmeno}@{Zvire.Druh}@{Zvire.Vek}@{Zvire.Pohlavi}@{Zvire.DatumPrijmu}@{Zvire.ZdravotniStav}@{Zvire.Poznamka}@{ConvertBoolToString(Zvire.Adopce)}@{Zvire.DatumAdopce}";  
             using (StreamWriter sw = new StreamWriter(FullPath, true))
             {
                 sw.WriteLine(ZvireTemp);
@@ -38,7 +56,7 @@ namespace Utulek.Services
                 while ((Line = sr.ReadLine()) != null)
                 {
                     List<string> Parts = Line.Split('@').ToList();
-                    Zvire zvire = new Zvire(int.Parse(Parts[0]), Parts[1], Parts[2], int.Parse(Parts[3]), Parts[4], Parts[5], Parts[6], Parts[7], Parts[8], Parts[9]);
+                    Zvire zvire = new Zvire(int.Parse(Parts[0]), Parts[1], Parts[2], int.Parse(Parts[3]), Parts[4], Parts[5], Parts[6], Parts[7], ConvertStringToBool(Parts[8]), Parts[9]);
                     Zvirata.Add(zvire);
                 }
             }
