@@ -34,8 +34,11 @@ namespace Utulek.UI
                         string jmeno = Console.ReadLine();
                         Console.WriteLine("Druh zvířete:");
                         string druh = Console.ReadLine();
-                        Console.WriteLine("Věk zvířete:");
-                        int vek = int.Parse(Console.ReadLine());
+                        int vek = -1
+                        while(vek == -1) {
+                            Console.WriteLine("Věk zvířete:");
+                            vek = int.TryParse(Console.ReadLine(), out int vek);
+                        }
                         Console.WriteLine("Pohlaví zvířete:");
                         string pohlavi = Console.ReadLine();
                         Console.WriteLine("Datum přijetí (dd/mm/yyyy):");
