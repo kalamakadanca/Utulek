@@ -45,7 +45,9 @@ namespace Utulek
                 Console.WriteLine("Filtrovane zvirata podle jmena (Micka): " + zvire.Jmeno);
             }
 
-            EvidenceUtulku.SmazatZvireZeSouboru("zvirata.txt", 2); 
+            // //EvidenceUtulku.SmazatZvireZeSouboru("zvirata.txt", 2);
+            // Zvire tempUpZv = new Zvire(3, "Hello", "hello", 3, "hell", "45678", "good", "jkld", EvidenceUtulku.ConvertStringToBool("ne"), "ne");
+            // EvidenceUtulku.UpdateZvireVSouboru("zvirata.txt", tempUpZv);
         }
     }
 }
