@@ -88,9 +88,33 @@ namespace Utulek.Services
                     break;
                 }
             }
+             
+              
             foreach (var zvire in Zvirata)
             {
                 ZapisZvireDoSouboru(Soubor, zvire);
+            }
+            
+        }
+
+        public static void UpdateZvireVSouboru(string Soubor, Zvire UpdatedZvire)
+        {
+         List<Zvire> Zvirata = VypisZvireZeSouboru(Soubor);
+            for (int i = 0; i < Zvirata.Count(); i++)
+            {
+                if (Zvirata[i].ID == UpdatedZvire.ID)
+                {
+                    Zvirata[i] = UpdatedZvire;
+                    break;
+                }
+            }
+            
+            using (StreamWriter sw = new StreamWriter(Soubor, false))
+            {
+                foreach (var zvire in Zvirata)
+                {
+                    ZapisZvireDoSouboru(Soubor, zvire);
+                }
             }
         }
 
