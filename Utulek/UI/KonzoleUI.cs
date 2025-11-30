@@ -32,20 +32,20 @@ namespace Utulek.UI
                 Console.WriteLine("3) Vyhledat/filtrovat");
                 Console.WriteLine("4) Označit adopci");
                 Console.WriteLine("0) Konec");
-                volba = 0;
-                while (volba < 1)
+                volba = -1;
+                while (volba < 0)
                 {
                     Console.Write("Zadejte číslo volby: ");
                     string input = Console.ReadLine();
                     if (!int.TryParse(input, out volba))
                     {
                         Console.WriteLine("Neplatný vstup, zadejte číslo.");
-                        volba = 0;
+                        volba = -1;
                     }
                     if (volba < 0)
                     {
                         Console.WriteLine("Neplatný vstup, zadejte nezáporné číslo.");
-                        volba = 0;
+                        volba = -1;
                     }
                 }
 
