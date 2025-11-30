@@ -6,6 +6,7 @@ using System.IO; // pro operace se soubory
 using System.Threading.Tasks;
 using Utulek.Model;
 using Utulek.Services;
+using Utulek.UI;
 
 namespace Utulek
 {
@@ -45,7 +46,9 @@ namespace Utulek
                 Console.WriteLine("Filtrovane zvirata podle jmena (Micka): " + zvire.Jmeno);
             }
 
-            EvidenceUtulku.SmazatZvireZeSouboru("zvirata.txt", 2); 
+            EvidenceUtulku.SmazatZvireZeSouboru("zvirata.txt", 2);
+
+            KonzoleUI.ValidaceVstupu(args);
         }
     }
 }
