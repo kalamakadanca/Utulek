@@ -6,6 +6,7 @@ using System.IO; // pro operace se soubory
 using System.Threading.Tasks;
 using Utulek.Model;
 using Utulek.Services;
+using Utulek.UI;
 
 namespace Utulek
 {
@@ -48,6 +49,9 @@ namespace Utulek
             // //EvidenceUtulku.SmazatZvireZeSouboru("zvirata.txt", 2);
             // Zvire tempUpZv = new Zvire(3, "Hello", "hello", 3, "hell", "45678", "good", "jkld", EvidenceUtulku.ConvertStringToBool("ne"), "ne");
             // EvidenceUtulku.UpdateZvireVSouboru("zvirata.txt", tempUpZv);
+            EvidenceUtulku.SmazatZvireZeSouboru("zvirata.txt", 2);
+
+            KonzoleUI.ValidaceVstupu(args);
         }
     }
 }
