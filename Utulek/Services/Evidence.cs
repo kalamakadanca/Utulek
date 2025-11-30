@@ -80,27 +80,32 @@ namespace Utulek.Services
         public static void SmazatZvireZeSouboru(string Soubor, int ID)
         {
             List<Zvire> Zvirata = VypisZvireZeSouboru(Soubor);
-            foreach (var zvire in Zvirata)
+            for (int i = 0; i < Zvirata.Count; i++)
             {
-                if (zvire.ID == ID)
+                if (Zvirata[i].ID == ID)
                 {
-                    Zvirata.Remove(zvire);
+                    Zvirata.RemoveAt(i);
                     break;
                 }
             }
-             
-              
-            foreach (var zvire in Zvirata)
+
+            string ProjectPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "..");
+            string FullPath = Path.Combine(ProjectPath, Soubor);
+
+            using (StreamWriter sw = new StreamWriter(FullPath, false))
             {
-                ZapisZvireDoSouboru(Soubor, zvire);
+                foreach (var zvire in Zvirata)
+                {
+                    string line = $"{zvire.ID}@{zvire.Jmeno}@{zvire.Druh}@{zvire.Vek}@{zvire.Pohlavi}@{zvire.DatumPrijmu}@{zvire.ZdravotniStav}@{zvire.Poznamka}@{ConvertBoolToString(zvire.Adopce)}@{zvire.DatumAdopce}";
+                    sw.WriteLine(line);
+                }
             }
-            
         }
 
         public static void UpdateZvireVSouboru(string Soubor, Zvire UpdatedZvire)
         {
-         List<Zvire> Zvirata = VypisZvireZeSouboru(Soubor);
-            for (int i = 0; i < Zvirata.Count(); i++)
+            List<Zvire> Zvirata = VypisZvireZeSouboru(Soubor);
+            for (int i = 0; i < Zvirata.Count; i++)
             {
                 if (Zvirata[i].ID == UpdatedZvire.ID)
                 {
@@ -108,12 +113,16 @@ namespace Utulek.Services
                     break;
                 }
             }
-            
-            using (StreamWriter sw = new StreamWriter(Soubor, false))
+
+            string ProjectPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "..");
+            string FullPath = Path.Combine(ProjectPath, Soubor);
+
+            using (StreamWriter sw = new StreamWriter(FullPath, false))
             {
                 foreach (var zvire in Zvirata)
                 {
-                    ZapisZvireDoSouboru(Soubor, zvire);
+                    string line = $"{zvire.ID}@{zvire.Jmeno}@{zvire.Druh}@{zvire.Vek}@{zvire.Pohlavi}@{zvire.DatumPrijmu}@{zvire.ZdravotniStav}@{zvire.Poznamka}@{ConvertBoolToString(zvire.Adopce)}@{zvire.DatumAdopce}";
+                    sw.WriteLine(line);
                 }
             }
         }
