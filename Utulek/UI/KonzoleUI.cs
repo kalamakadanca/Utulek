@@ -17,6 +17,7 @@ namespace Utulek.UI
             int volba;
             while (end)
             {
+                Console.Clear();
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("==== ÚTULEK PRO ZVÍŘATA ====");
                 Console.ResetColor();
@@ -34,10 +35,15 @@ namespace Utulek.UI
                         string jmeno = Console.ReadLine();
                         Console.WriteLine("Druh zvířete:");
                         string druh = Console.ReadLine();
-                        int vek = -1
-                        while(vek == -1) {
+                        int vek = -1;
+                        while (vek < 0) {
                             Console.WriteLine("Věk zvířete:");
-                            vek = int.TryParse(Console.ReadLine(), out int vek);
+                            string input = Console.ReadLine();
+                            if (!int.TryParse(input, out vek))
+                            {
+                                Console.WriteLine("Neplatný vstup, zadejte číslo.");
+                                vek = -1;
+                            }
                         }
                         Console.WriteLine("Pohlaví zvířete:");
                         string pohlavi = Console.ReadLine();
