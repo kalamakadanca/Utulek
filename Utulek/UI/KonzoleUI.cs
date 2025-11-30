@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Utulek.Model;
 using Utulek.Services;
+using System.Text.RegularExpressions;
+using System.Security.Cryptography;
 
 namespace Utulek.UI
 {
@@ -15,6 +17,10 @@ namespace Utulek.UI
         {
             bool end = true;
             int volba;
+            string pattern_words = "^.+$";
+            Regex regex_words = new Regex(pattern_words);
+            List<Zvire> zverina;
+
             while (end)
             {
                 Console.Clear();
@@ -26,15 +32,38 @@ namespace Utulek.UI
                 Console.WriteLine("3) Vyhledat/filtrovat");
                 Console.WriteLine("4) Označit adopci");
                 Console.WriteLine("0) Konec");
-                Console.Write("Zadejte číslo volby: ");
-                volba = int.Parse(Console.ReadLine());
+                volba = 0;
+                while (volba < 1)
+                {
+                    Console.Write("Zadejte číslo volby: ");
+                    string input = Console.ReadLine();
+                    if (!int.TryParse(input, out volba))
+                    {
+                        Console.WriteLine("Neplatný vstup, zadejte číslo.");
+                        volba = 0;
+                    }
+                    if (volba < 0)
+                    {
+                        Console.WriteLine("Neplatný vstup, zadejte nezáporné číslo.");
+                        volba = 0;
+                    }
+                }
+
                 switch (volba)
                 {
                     case 1:
-                        Console.WriteLine("Jméno zvířete:");
-                        string jmeno = Console.ReadLine();
-                        Console.WriteLine("Druh zvířete:");
-                        string druh = Console.ReadLine();
+                        string jmeno = "";
+                        while (!regex_words.IsMatch(jmeno))
+                        {
+                            Console.WriteLine("Jméno zvířete:");
+                            jmeno = Console.ReadLine();
+                        }
+                        string druh = "";
+                        while (!regex_words.IsMatch(druh))
+                        {
+                            Console.WriteLine("Druh zvířete:");
+                            druh = Console.ReadLine();
+                        }
                         int vek = -1;
                         while (vek < 0) {
                             Console.WriteLine("Věk zvířete:");
@@ -45,26 +74,52 @@ namespace Utulek.UI
                                 vek = -1;
                             }
                         }
-                        Console.WriteLine("Pohlaví zvířete:");
-                        string pohlavi = Console.ReadLine();
+                        string pohlavi = "";
+                        while (!regex_words.IsMatch(pohlavi))
+                        {
+                            Console.WriteLine("Pohlaví zvířete:");
+                            pohlavi = Console.ReadLine();
+                        }
                         Console.WriteLine("Datum přijetí (dd/mm/yyyy):");
                         string datumPrijmu = Console.ReadLine();
-                        Console.WriteLine("Zdravotní stav zvířete:");
-                        string zdravotniStav = Console.ReadLine();
-                        Console.WriteLine("Poznámka:");
-                        string poznamka = Console.ReadLine();
+                        string zdravotniStav = "";
+                        while (!regex_words.IsMatch(zdravotniStav))
+                        {
+                            Console.WriteLine("Zdravotní stav zvířete:");
+                            zdravotniStav = Console.ReadLine();
+                        }
+                        string poznamka = "";
+                        while (!regex_words.IsMatch(poznamka))
+                        {
+                            Console.WriteLine("Poznámka:");
+                            poznamka = Console.ReadLine();
+                        }
                         Console.WriteLine("Bylo zvíře adoptováno? (ano/ne):");
                         string adopceInput = Console.ReadLine();
                         bool adopce = adopceInput.ToLower() == "ano";
                         string datumAdopce = adopce ? DateTime.Now.ToString("dd/MM/yyyy") : "neadoptovano";
                         Utulek.Model.Zvire noveZvire = new Utulek.Model.Zvire(jmeno, druh, vek, pohlavi, datumPrijmu, zdravotniStav, poznamka, adopce, datumAdopce);
                         EvidenceUtulku.ZapisZvireDoSouboru("zvirata.txt", noveZvire);
+                        Console.ForegroundColor = ConsoleColor.DarkYellow;
+                        Console.WriteLine("Stiskni libovolnou klávesu pro pokračování");
+                        Console.ResetColor();
+                        Console.ReadKey();
                         break;
                     case 2:
                         Console.WriteLine("Seznam všech zvířat v útulku:");
-                        Console.WriteLine(EvidenceUtulku.VypisZvireZeSouboru("zvirata.txt"));
+                        zverina = EvidenceUtulku.VypisZvireZeSouboru("zvirata.txt");
+                        foreach (var zvire in zverina)
+                        {
+                            // TODO - printovani toho, co chceme
+                            Console.WriteLine($"jméno: {zvire.Jmeno}, id: {zvire.ID}, věk: {zvire.Vek}");
+                        }
+                        Console.ForegroundColor = ConsoleColor.DarkYellow;
+                        Console.WriteLine("Stiskni libovolnou klávesu pro pokračování");
+                        Console.ResetColor();
+                        Console.ReadKey();
                         break;
                     case 3:
+                        //TODO - dodelat
                         Console.WriteLine("Zadejte, podle čeho chcete filtrovat: ");
                         Console.WriteLine("1) Jméno");
                         Console.WriteLine("2) Druh");
@@ -78,6 +133,11 @@ namespace Utulek.UI
                             Console.WriteLine("Zadejte operátor filtru (>, <, =):");
                             string operat = Console.ReadLine();
                             Console.WriteLine(EvidenceUtulku.FiltrZviratVek("zvirata.txt", vekFilter, operat));
+                            List<Zvire> Zverina = EvidenceUtulku.VypisZvireZeSouboru("zvirata.txt");
+                            foreach (var zvire in Zverina)
+                            {
+                                Console.WriteLine($"jméno: {zvire.Jmeno}, id: {zvire.ID}, věk: {zvire.Vek}");
+                            }
                         }
                         else if (filterVolba == 2)
                         {
@@ -91,17 +151,39 @@ namespace Utulek.UI
                             string jmenoFilter = Console.ReadLine();
                             Console.WriteLine(EvidenceUtulku.FiltrZviratJmeno("zvirata.txt", jmenoFilter));
                         }
+                        Console.ForegroundColor = ConsoleColor.DarkYellow;
+                        Console.WriteLine("Stiskni libovolnou klávesu pro pokračování");
+                        Console.ResetColor();
+                        Console.ReadKey();
                         break;
                     case 4:
                         Console.WriteLine("Zadejte ID zvířete k označení adopce:");
-                        int id = int.Parse(Console.ReadLine());
-
+                        int id = -1;
+                        while (id < 0)
+                        {
+                            Console.WriteLine("Zadejte ID zvířete k označení adopce:");
+                            string input = Console.ReadLine();
+                            if (!int.TryParse(input, out id))
+                            {
+                                Console.WriteLine("Neplatný vstup, zadejte číslo.");
+                                id = -1;
+                            }
+                        }
+                        // TODO - volani funkce pro oznaceni adopce
+                        Console.ForegroundColor = ConsoleColor.DarkYellow;
+                        Console.WriteLine("Stiskni libovolnou klávesu pro pokračování");
+                        Console.ResetColor();
+                        Console.ReadKey();
                         break;
                     case 0:
                         end = false;
                         break;
                     default:
                         Console.WriteLine("Neplatná volba, zkuste to znovu.");
+                        Console.ForegroundColor = ConsoleColor.DarkYellow;
+                        Console.WriteLine("Stiskni libovolnou klávesu pro pokračování");
+                        Console.ResetColor();
+                        Console.ReadKey();
                         break;
                 }
             }

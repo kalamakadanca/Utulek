@@ -14,39 +14,40 @@ namespace Utulek
     {
         static void Main(string[] args)
         {
-            Zvire zvire1 = new Zvire(1, "Benny", "pes", 3, "male", "2022/5/10", "zdravy", "pritelny a hravy", EvidenceUtulku.ConvertStringToBool("ne"), "neadoptovano");
-            Zvire zvire2 = new Zvire(2, "Micka", "kocka", 2, "female", "2023/1/15", "zdrava", "klidna a mazliva", EvidenceUtulku.ConvertStringToBool("ano"), "2024/6/1");
+            /*Zvire zvire1 = new Zvire(1, "Benny", "pes", 3, "male", "2022/5/10", "zdravy", "pritelny a hravy", EvidenceUtulku.ConvertStringToBool("ne"), "neadoptovano");
+            *Zvire zvire2 = new Zvire(2, "Micka", "kocka", 2, "female", "2023/1/15", "zdrava", "klidna a mazliva", EvidenceUtulku.ConvertStringToBool("ano"), "2024/6/1");
 
-            EvidenceUtulku.ZapisZvireDoSouboru("zvirata.txt", zvire1);
-            EvidenceUtulku.ZapisZvireDoSouboru("zvirata.txt", zvire2);
+            *EvidenceUtulku.ZapisZvireDoSouboru("zvirata.txt", zvire1);
+            *EvidenceUtulku.ZapisZvireDoSouboru("zvirata.txt", zvire2);
             
-            Zvire zvire3 = new Zvire("Rex", "pes", 4, "male", "2021/11/20", "zdravy", "ochranny a energicky", EvidenceUtulku.ConvertStringToBool("ne"), "neadoptovano");
-            EvidenceUtulku.ZapisZvireAutoID("zvirata.txt", zvire3);
-            EvidenceUtulku.SmazatZvireZeSouboru("zvirata.txt",3);
+            *Zvire zvire3 = new Zvire("Rex", "pes", 4, "male", "2021/11/20", "zdravy", "ochranny a energicky", EvidenceUtulku.ConvertStringToBool("ne"), "neadoptovano");
+            *EvidenceUtulku.ZapisZvireAutoID("zvirata.txt", zvire3);
+            *EvidenceUtulku.SmazatZvireZeSouboru("zvirata.txt",3);
 
-            List <Zvire> Zverina = EvidenceUtulku.VypisZvireZeSouboru("zvirata.txt");
-            foreach (var zvire in Zverina)
-            {
-                Console.WriteLine(zvire.Jmeno + zvire.ID + zvire.Vek);
-            }
+            *List <Zvire> Zverina = EvidenceUtulku.VypisZvireZeSouboru("zvirata.txt");
+            *foreach (var zvire in Zverina)
+            *{
+            *    Console.WriteLine(zvire.Jmeno + zvire.ID + zvire.Vek);
+            *}
 
-            List<Zvire> FiltrovanaZverina = EvidenceUtulku.FiltrZviratDruh("zvirata.txt", "pes");
-            foreach (var zvire in FiltrovanaZverina)
-            {
-                Console.WriteLine("Filtrovane zvirata podle druhu (pes): " + zvire.Jmeno + " " + zvire.Druh);
-            }
-            List<Zvire> FiltrovanaZverinaVek = EvidenceUtulku.FiltrZviratVek("zvirata.txt", 3, ">");
-            foreach (var zvire in FiltrovanaZverinaVek)
-            {
-                Console.WriteLine("Filtrovane zvirata podle veku (vetsi nez 3): " + zvire.Jmeno + " " + zvire.Vek);
-            }
-            List<Zvire> FiltrovanaZverinaJmeno = EvidenceUtulku.FiltrZviratJmeno("zvirata.txt", "Micka");
-            foreach (var zvire in FiltrovanaZverinaJmeno)
-            {
-                Console.WriteLine("Filtrovane zvirata podle jmena (Micka): " + zvire.Jmeno);
-            }
+            *List<Zvire> FiltrovanaZverina = EvidenceUtulku.FiltrZviratDruh("zvirata.txt", "pes");
+            *foreach (var zvire in FiltrovanaZverina)
+            *{
+            *    Console.WriteLine("Filtrovane zvirata podle druhu (pes): " + zvire.Jmeno + " " + zvire.Druh);
+            *}
+            *List<Zvire> FiltrovanaZverinaVek = EvidenceUtulku.FiltrZviratVek("zvirata.txt", 3, ">");
+            *foreach (var zvire in FiltrovanaZverinaVek)
+            *{
+            *    Console.WriteLine("Filtrovane zvirata podle veku (vetsi nez 3): " + zvire.Jmeno + " " + zvire.Vek);
+            *}
+            *List<Zvire> FiltrovanaZverinaJmeno = EvidenceUtulku.FiltrZviratJmeno("zvirata.txt", "Micka");
+            *foreach (var zvire in FiltrovanaZverinaJmeno)
+            *{
+            *    Console.WriteLine("Filtrovane zvirata podle jmena (Micka): " + zvire.Jmeno);
+            *}
+            */
 
-            // //EvidenceUtulku.SmazatZvireZeSouboru("zvirata.txt", 2);
+            // EvidenceUtulku.SmazatZvireZeSouboru("zvirata.txt", 2);
             // Zvire tempUpZv = new Zvire(3, "Hello", "hello", 3, "hell", "45678", "good", "jkld", EvidenceUtulku.ConvertStringToBool("ne"), "ne");
             // EvidenceUtulku.UpdateZvireVSouboru("zvirata.txt", tempUpZv);
             EvidenceUtulku.SmazatZvireZeSouboru("zvirata.txt", 2);

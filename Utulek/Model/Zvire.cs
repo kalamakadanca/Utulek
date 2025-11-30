@@ -8,7 +8,7 @@ namespace Utulek.Model
 {
     public class Zvire
     {
-        public int ID { get; private set; }
+        public int ID { get; set; }
         public string Jmeno { get; private set; }
         public string Druh { get; private set; }
         public int Vek { get; private set; }
