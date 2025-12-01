@@ -169,6 +169,9 @@ namespace Utulek.UI
                                 id = -1;
                             }
                         }
+                        List<Zvire> zver = EvidenceUtulku.VypisZvireZeSouboru("zvirata.txt");
+                        zver.Find(z => z.ID == id).OznacitAdopci();
+                        EvidenceUtulku.UpdateZvireVSouboru("zvirata.txt", zver.Find(z => z.ID == id));
                         // TODO - volani funkce pro oznaceni adopce
                         Console.ForegroundColor = ConsoleColor.DarkYellow;
                         Console.WriteLine("Stiskni libovolnou klávesu pro pokračování");
