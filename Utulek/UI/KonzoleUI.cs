@@ -110,7 +110,6 @@ namespace Utulek.UI
                         zverina = EvidenceUtulku.VypisZvireZeSouboru("zvirata.txt");
                         foreach (var zvire in zverina)
                         {
-                            // TODO - printovani toho, co chceme
                             Console.WriteLine($"jméno: {zvire.Jmeno}, id: {zvire.ID}, věk: {zvire.Vek}");
                         }
                         Console.ForegroundColor = ConsoleColor.DarkYellow;
@@ -119,7 +118,6 @@ namespace Utulek.UI
                         Console.ReadKey();
                         break;
                     case 3:
-                        //TODO - dodelat
                         Console.WriteLine("Zadejte, podle čeho chcete filtrovat: ");
                         Console.WriteLine("1) Jméno");
                         Console.WriteLine("2) Druh");
@@ -133,7 +131,7 @@ namespace Utulek.UI
                             Console.WriteLine("Zadejte operátor filtru (>, <, =):");
                             string operat = Console.ReadLine();
                             Console.WriteLine(EvidenceUtulku.FiltrZviratVek("zvirata.txt", vekFilter, operat));
-                            List<Zvire> Zverina = EvidenceUtulku.VypisZvireZeSouboru("zvirata.txt");
+                            List<Zvire> Zverina = EvidenceUtulku.FiltrZviratVek("zvirata.txt", vekFilter, operat);
                             foreach (var zvire in Zverina)
                             {
                                 Console.WriteLine($"jméno: {zvire.Jmeno}, id: {zvire.ID}, věk: {zvire.Vek}");
@@ -143,13 +141,21 @@ namespace Utulek.UI
                         {
                             Console.WriteLine("napiš druh zvířete");
                             string druhFilter = Console.ReadLine();
-                            Console.WriteLine(EvidenceUtulku.FiltrZviratDruh("zvirata.txt", druhFilter));
+                            List<Zvire> Zverina = EvidenceUtulku.FiltrZviratDruh("zvirata.txt", druhFilter);
+                            foreach (var zvire in Zverina)
+                            {
+                                Console.WriteLine($"jméno: {zvire.Jmeno}, id: {zvire.ID}, věk: {zvire.Vek}");
+                            }
                         }
                         else if (filterVolba == 1)
                         {
                             Console.WriteLine("napiš jméno zvířete");
                             string jmenoFilter = Console.ReadLine();
-                            Console.WriteLine(EvidenceUtulku.FiltrZviratJmeno("zvirata.txt", jmenoFilter));
+                            List<Zvire> Zverina = EvidenceUtulku.FiltrZviratJmeno("zvirata.txt", jmenoFilter);
+                            foreach (var zvire in Zverina)
+                            {
+                                Console.WriteLine($"jméno: {zvire.Jmeno}, id: {zvire.ID}, věk: {zvire.Vek}");
+                            }
                         }
                         Console.ForegroundColor = ConsoleColor.DarkYellow;
                         Console.WriteLine("Stiskni libovolnou klávesu pro pokračování");
